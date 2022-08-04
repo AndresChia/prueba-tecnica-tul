@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RickAndMortyComponent } from './rickAndMorty.component';
+import RickAndMortyComponent from './rickAndMorty.component';
+import RickAndMortyRoutingModule from './rickAndMorty-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [RickAndMortyComponent]
+  exports: [RickAndMortyComponent],
+  imports: [CommonModule, RickAndMortyRoutingModule],
+  declarations: [RickAndMortyComponent],
 })
-export class RickAndMortyModule { }
+export default class RickAndMortyModule {}

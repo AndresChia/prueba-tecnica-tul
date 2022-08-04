@@ -22,6 +22,11 @@ const routes: Routes = [
     path: 'menus',
     loadChildren: () => import('./menus/menus.module').then((m) => m.default),
   },
+  {
+    path: 'rick-and-morty',
+    loadChildren: () =>
+      import('./rickAndMorty/rickAndMorty.module').then((m) => m.default),
+  },
   { path: '**', redirectTo: 'home' },
 ];
 
