@@ -1,0 +1,34 @@
+<div class="filter-container">
+  <div class="sub-filter-container">
+    <h3 class="sub-filter-container__title">Filtro por titulo</h3>
+    <input
+      class="sub-filter-container__input"
+      type="text"
+      [(ngModel)]="filterTitle"
+    />
+  </div>
+  <div class="sub-filter-container">
+    <h3 class="filter-container__title">Buscar</h3>
+    <select
+      class="select-title"
+      name="select"
+      [(ngModel)]="selectTitle"
+      (ngModelChange)="changeSelect($event)"
+    >
+      <option value="value1" *ngFor="let item of photos" [ngValue]="item">
+        {{ item.title }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div
+  [id]="item.id"
+  class="card-container"
+  *ngFor="let item of getFilterTitle()"
+>
+  <h1 class="card-container__title">{{ item.title }}</h1>
+  <img class="card-container__image" [src]="item.url" alt="item.title" />
+</div>
+
+<div class="card-container" *ngIf="loading">Loading</div>

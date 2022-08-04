@@ -1,0 +1,45 @@
+.filter-container {
+  padding: 10px;
+  background-color: #34495e;
+  color: white;
+  background-image: none;
+  box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+  margin: 80px;
+  border-radius: 12px;
+  position: sticky;
+  z-index: 999;
+  top: 170px;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sub-filter-container {
+  &__title {
+    text-transform: capitalize;
+  }
+}
+
+.select-title {
+  width: 100px;
+}
+
+.card-container {
+  background-image: none;
+  box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+  border-radius: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 80px;
+  padding: 50px;
+  &__title {
+    text-transform: capitalize;
+  }
+  &__image {
+    width: 40vw;
+    height: 40vw;
+  }
+}

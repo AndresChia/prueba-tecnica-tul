@@ -1,0 +1,15 @@
+.container-card {
+  background-image: none;
+  box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+  border-radius: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 80px;
+  padding: 50px;
+  &__title {
+    text-transform: capitalize;
+  }
+}
