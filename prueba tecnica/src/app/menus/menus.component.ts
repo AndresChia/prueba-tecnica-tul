@@ -12,8 +12,6 @@ export default class MenusComponent implements OnInit {
 
   observableMenu = of(mockMenu);
 
-  map: Map<string, Menu> = new Map<string, Menu>();
-
   selectTitle: string = '';
 
   leafMenus!: { name: string; value: Menu }[];
@@ -23,11 +21,11 @@ export default class MenusComponent implements OnInit {
   }
 
   getMenus() {
-    this.observableMenu.subscribe((response: Array<Menu>) => {
+    this.observableMenu.subscribe((_response: Array<Menu>) => {
       //
     });
 
-    this.leafMenus = Array.from(this.map, ([name, value]) => ({ name, value }));
+    this.leafMenus = [];
   }
 
   changeSelect({ value }: any) {

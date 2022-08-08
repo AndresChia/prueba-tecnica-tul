@@ -27,6 +27,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./rickAndMorty/rickAndMorty.module').then((m) => m.default),
   },
+  {
+    path: 'auditoring',
+    loadChildren: () =>
+      import('./auditoring/auditoring.module').then((m) => m.default),
+  },
   { path: '**', redirectTo: 'home' },
 ];
 
