@@ -27,6 +27,7 @@
     "@angular/router": "^14.0.0",
     "@apollo/client": "^3.6.9",
     "apollo-angular": "^3.0.1",
+    "git-cz": "^4.9.0",
     "graphql": "^16.5.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
