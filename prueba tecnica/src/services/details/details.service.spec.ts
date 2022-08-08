@@ -2,7 +2,7 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
-import { DetailsService } from './details.service';
+import DetailsService from './details.service';
 
 describe('Service: Details', () => {
   beforeEach(() => {

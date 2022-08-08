@@ -1,40 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { gql } from 'apollo-angular';
+import { Apollo, gql } from 'apollo-angular';
+import {
+  FilterGraph,
+  GraphCharacters,
+  InfoCharacter,
+  ResultCharacter,
+} from './characters';
 
 @Component({
   selector: 'app-rickAndMorty',
   templateUrl: './rickAndMorty.component.html',
-  styleUrls: ['./rickAndMorty.component.css'],
+  styleUrls: ['./rickAndMorty.component.scss'],
 })
 export default class RickAndMortyComponent implements OnInit {
-  apollo: any;
+  characters!: Array<ResultCharacter>;
 
-  constructor() {}
+  info!: InfoCharacter;
+
+  loading: boolean = false;
+
+  constructor(private apollo: Apollo) {}
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(page: number = 1, filter: string = '{}') {
+    this.loading = true;
     this.apollo
-      .watchQuery({
+      .watchQuery<GraphCharacters>({
         query: gql`
           {
-            characters(page: 2, filter: { name: "Morty" }) {
+            characters(page: ${page}, filter: ${filter}) {
               info {
                 count
+                pages
+                next
+                prev
               }
               results {
                 name
+                image
               }
-            }
-            location(id: 1) {
-              id
-            }
-            episodesByIds(ids: [1, 2]) {
-              id
             }
           }
         `,
       })
-      .valueChanges.subscribe((result: any) => {
-        debugger;
+      .valueChanges.subscribe(({ data: { characters } }) => {
+        this.loading = false;
+        this.characters = characters.results;
+        this.info = characters.info;
       });
+  }
+
+  nextPage() {
+    this.getData(this.info.next);
+  }
+
+  prevPage() {
+    this.getData(this.info.prev);
   }
 }

@@ -1,4 +1,4 @@
-<div class="container-card">
+<div class="container-card" *ngIf="todo">
   <h1 class="container-card__title">{{ todo.title }}</h1>
   <img
     class="container-card__image"
@@ -6,3 +6,5 @@
     [alt]="todo.image?.title"
   />
 </div>
+
+<div class="container-card" *ngIf="loading">Cargando</div>

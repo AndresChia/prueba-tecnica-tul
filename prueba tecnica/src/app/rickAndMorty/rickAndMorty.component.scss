@@ -12,20 +12,20 @@
   &__title {
     text-transform: capitalize;
   }
+  &__image {
+    width: 40vw;
+    height: 40vw;
+  }
 }
 
-.filter-container {
-  padding: 10px;
-  background-color: #34495e;
-  color: white;
+.container-footer {
   background-image: none;
   box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 40%);
+  border-radius: 27px;
   margin: 80px;
-  border-radius: 12px;
-  position: sticky;
-  z-index: 999;
-  top: 170px;
-  left: 0;
+  padding: 50px;
   display: flex;
   justify-content: space-around;
+  &__button {
+  }
 }

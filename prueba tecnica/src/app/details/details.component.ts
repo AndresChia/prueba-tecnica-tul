@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import DetailsService from 'src/services/details/details.service';
 import { Detail } from './detail';
 import { delay } from 'rxjs/operators';
+import { forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -11,7 +12,10 @@ import { delay } from 'rxjs/operators';
 })
 export default class DetailsComponent {
   id!: number;
+
   todo!: Detail;
+
+  loading: boolean = false;
 
   constructor(
     private detailsService: DetailsService,
@@ -19,8 +23,21 @@ export default class DetailsComponent {
   ) {
     // realizar estos dos llamados en una misma transaccion con
     this.id = Number(this.activatedRoute.snapshot.paramMap.get('id') ?? 1);
-    this.getImage();
-    this.getDetails();
+    // this.getImage();
+    // this.getDetails();
+    this.getData();
+  }
+
+  getData() {
+    this.loading = true;
+    const observable = forkJoin({
+      image: this.detailsService.getImage(this.id).pipe(delay(2000)),
+      details: this.detailsService.getDetail(this.id),
+    });
+    observable.subscribe(({ details, image }) => {
+      this.loading = false;
+      this.todo = { ...details, image: { ...image } };
+    });
   }
 
   getImage() {

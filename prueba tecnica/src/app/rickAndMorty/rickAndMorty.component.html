@@ -1,3 +1,19 @@
-<p>
-  rickAndMorty works!
-</p>
+<div class="container-card" *ngFor="let item of characters">
+  <h1 class="container-card__title">{{ item.name }}</h1>
+</div>
+<div class="container-footer">
+  <button
+    class="container-footer__button"
+    [disabled]="info ? !info.prev : false"
+    (click)="prevPage()"
+  >
+    Anterior
+  </button>
+  <button
+    class="container-footer__button"
+    [disabled]="info ? !info.next : false"
+    (click)="nextPage()"
+  >
+    Siguiente
+  </button>
+</div>
