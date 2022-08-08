@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import ApiService from 'src/services/api/api.service';
 import { Photo } from './photo';
 
@@ -17,9 +16,7 @@ export default class PerformanceComponent implements OnInit {
 
   loading: boolean = false;
 
-  todo = new Subject<Array<Photo>>();
-
-  timeout = setTimeout(() => {}, 1000);
+  todo: Array<Photo> = [];
 
   constructor(private apiService: ApiService) {}
 
@@ -27,31 +24,17 @@ export default class PerformanceComponent implements OnInit {
     this.loading = true;
     this.apiService.getPhotos().subscribe((response) => {
       this.photos = response;
-      this.todo.next(response);
+      this.todo = this.photos;
       this.loading = false;
     });
   }
 
-  photoById(_index: number, photo: Photo) {
-    return photo.id;
+  changeTitle(event: string) {
+    this.todo = this.photos.filter((element) => element.title.includes(event));
   }
 
-  changeTitle(_option: any) {
-    this.loading = true;
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      if (this.filterTitle.length === 0) {
-        this.todo.next(this.photos);
-      }
-
-      this.todo.next(
-        this.photos.filter((element) =>
-          element.title.includes(this.filterTitle)
-        )
-      );
-
-      this.loading = false;
-    }, 500);
+  photoById(_index: number, photo: Photo) {
+    return photo.id;
   }
 
   changeSelect(option: any) {

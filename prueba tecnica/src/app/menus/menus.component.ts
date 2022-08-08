@@ -24,23 +24,10 @@ export default class MenusComponent implements OnInit {
 
   getMenus() {
     this.observableMenu.subscribe((response: Array<Menu>) => {
-      response.forEach((menu) => {
-        this.treeTraversals(menu);
-      });
+      //
     });
 
     this.leafMenus = Array.from(this.map, ([name, value]) => ({ name, value }));
-  }
-
-  treeTraversals(subTree: Menu) {
-    if (subTree.children && subTree.children.length > 0) {
-      // eslint-disable-next-line no-restricted-syntax
-      for (const iterator of subTree.children) {
-        this.treeTraversals(iterator);
-      }
-    } else {
-      this.map.set(subTree.id ?? '', subTree);
-    }
   }
 
   changeSelect({ value }: any) {

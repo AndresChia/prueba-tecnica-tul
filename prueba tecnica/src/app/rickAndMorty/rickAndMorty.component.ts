@@ -25,32 +25,9 @@ export default class RickAndMortyComponent implements OnInit {
     this.getData();
   }
 
+  // characters page
   getData(page: number = 1, filter: string = '{}') {
     this.loading = true;
-    this.apollo
-      .watchQuery<GraphCharacters>({
-        query: gql`
-          {
-            characters(page: ${page}, filter: ${filter}) {
-              info {
-                count
-                pages
-                next
-                prev
-              }
-              results {
-                name
-                image
-              }
-            }
-          }
-        `,
-      })
-      .valueChanges.subscribe(({ data: { characters } }) => {
-        this.loading = false;
-        this.characters = characters.results;
-        this.info = characters.info;
-      });
   }
 
   nextPage() {

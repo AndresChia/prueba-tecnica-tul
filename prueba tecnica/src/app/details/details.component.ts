@@ -23,21 +23,8 @@ export default class DetailsComponent {
   ) {
     // realizar estos dos llamados en una misma transaccion con
     this.id = Number(this.activatedRoute.snapshot.paramMap.get('id') ?? 1);
-    // this.getImage();
-    // this.getDetails();
-    this.getData();
-  }
-
-  getData() {
-    this.loading = true;
-    const observable = forkJoin({
-      image: this.detailsService.getImage(this.id).pipe(delay(2000)),
-      details: this.detailsService.getDetail(this.id),
-    });
-    observable.subscribe(({ details, image }) => {
-      this.loading = false;
-      this.todo = { ...details, image: { ...image } };
-    });
+    this.getImage();
+    this.getDetails();
   }
 
   getImage() {

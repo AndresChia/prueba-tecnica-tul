@@ -16,18 +16,16 @@
       [(ngModel)]="selectTitle"
       (ngModelChange)="changeSelect($event)"
     >
-      <option value="value1" *ngFor="let item of todo | async" [ngValue]="item">
+      <option value="value1" *ngFor="let item of todo" [ngValue]="item">
         {{ item.title }}
       </option>
     </select>
   </div>
 </div>
 
-<ng-container *ngFor="let item of todo | async; trackBy: photoById">
-  <div [id]="item.id" class="card-container" *ngIf="!loading">
+<ng-container *ngFor="let item of todo; trackBy: photoById">
+  <div [id]="item.id" class="card-container">
     <h1 class="card-container__title">{{ item.title }}</h1>
     <img class="card-container__image" [src]="item.url" alt="item.title" />
   </div>
 </ng-container>
-
-<div class="card-container" *ngIf="loading">Loading</div>
