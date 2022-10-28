@@ -1,0 +1,11 @@
+.container-searcher {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  margin-top: 40px;
+}
+
+.select-user {
+  width: 300px;
+}
