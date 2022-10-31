@@ -10,14 +10,7 @@ export default class UsersService {
   getUsers(page: number = 0, perPage: number = 50) {
     // se debe tomar todos los usuarios el id y el nombre para mostrarlos en el select
     return this.apollo.watchQuery<any>({
-      query: gql`
-        query {
-          allUsers(page: ${page}, perPage: ${perPage}) {
-            id
-            name
-          }
-        }
-      `,
+      query: gql``,
     }).valueChanges;
   }
 
