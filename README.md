@@ -3,8 +3,8 @@
 ## Rest server
 
 ```
-npm install -g json-server   
-json-server --watch db.json   
+npm install -g json-server
+json-server --watch db.json
 
 ```
 
@@ -12,6 +12,5 @@ json-server --watch db.json
 
 ```
 npm install -g json-graphql-server
-json-graphql-server graphql-server.json --p 5000
-
+json-graphql-server db-graph.js --p 3002
 ```

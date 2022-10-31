@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
+import environment from 'src/environments/environment';
 
-const uri = 'https://rickandmortyapi.com/graphql';
+const uri = environment.API_GRAPH_URL;
+
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: httpLink.create({ uri }),

@@ -1,3 +1,7 @@
-<div>
-  <app-searcher></app-searcher>
+<div class="container-searcher">
+  <app-searcher (changeUser)="changeUser($event)"></app-searcher>
+</div>
+
+<div class="container-details">
+  <app-detail [photo]="photo"></app-detail>
 </div>
