@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import PhotosService from 'src/services/rest/photos/photos.service';
+import { Photo } from './photo';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,11 @@ import PhotosService from 'src/services/rest/photos/photos.service';
   styleUrls: ['./home.component.scss'],
 })
 export default class HomeComponent {
-  photo: any;
+  photo!: Photo;
 
   constructor(private photosService: PhotosService) {}
 
-  changeUser(id_user: any) {
+  changeUser(id_user: string) {
     this.photosService.getPhoto(Number(id_user)).subscribe((response) => {
       this.photo = response;
     });

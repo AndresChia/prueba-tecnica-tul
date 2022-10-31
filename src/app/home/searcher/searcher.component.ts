@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import UsersService from 'src/services/graph/users/users.service';
+import { User } from './user';
 
 @Component({
   selector: 'app-searcher',
@@ -7,11 +8,11 @@ import UsersService from 'src/services/graph/users/users.service';
   styleUrls: ['./searcher.component.css'],
 })
 export default class SearcherComponent implements OnInit {
-  user!: string;
+  selectedUser!: string;
 
-  users: Array<any> = [];
+  users: Array<User> = [];
 
-  @Output() changeUser = new EventEmitter<any>();
+  @Output() changeUser = new EventEmitter<string>();
 
   constructor(private usersService: UsersService) {}
 
@@ -25,7 +26,7 @@ export default class SearcherComponent implements OnInit {
     });
   }
 
-  changeSelect(id_user: any) {
+  changeSelect(id_user: string) {
     this.changeUser.emit(id_user);
   }
 }

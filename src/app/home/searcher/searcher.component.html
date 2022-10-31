@@ -1,7 +1,10 @@
 <div class="container-searcher">
   <mat-form-field appearance="fill">
     <mat-label>Seleccione un usuario</mat-label>
-    <mat-select [(value)]="user" (selectionChange)="changeSelect(user)">
+    <mat-select
+      [(value)]="selectedUser"
+      (selectionChange)="changeSelect(selectedUser)"
+    >
       <mat-option *ngFor="let user of users" [value]="user.id">
         {{ user.name }}
       </mat-option>

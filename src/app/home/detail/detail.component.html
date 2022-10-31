@@ -1,3 +1,5 @@
-<p>
-  {{ photo | json }}
-</p>
+<div class="container-image" *ngIf="detail">
+  <h1>{{ detail.title }}</h1>
+  <img class="" [src]="detail.url" [alt]="detail.title" />
+</div>
+<div class="container-menu"></div>

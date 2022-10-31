@@ -2,17 +2,17 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
-import PhotosService from './photos.service';
+import MenusService from './menus.service';
 
-describe('Service: Photos', () => {
+describe('Service: Menus', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PhotosService],
+      providers: [MenusService],
       imports: [HttpClientTestingModule],
     });
   });
 
-  it('should ...', inject([PhotosService], (service: PhotosService) => {
+  it('should ...', inject([MenusService], (service: MenusService) => {
     expect(service).toBeTruthy();
   }));
 });
